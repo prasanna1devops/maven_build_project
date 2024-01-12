@@ -4,10 +4,8 @@ pipeline {
     stages {
         stage('Artifact Registry Creation') {
             when {
-                anyOf {
-                    branch 'main'
-                    branch 'test'
-                    branch 'develop'
+                expression {
+                    true
                 }
             }
             steps {
@@ -44,25 +42,4 @@ pipeline {
                         } 
                     }
                 }*/
-            }
-        }
-
-        stage('docker image Creation') {
-            steps {
-                echo 'Test App in dev'
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                echo 'Deploy App in production'
-            }
-        }
-    }
-
-    post {
-        always {
-            cleanWs()
-        }
-    }
-}
+  
